@@ -1,2 +1,7 @@
-tyler@52.184.183.169
-
+all:
+ hosts:
+  tyler@52.184.183.169
+ children:
+  web servers:
+   tyler@52.138.112.121
+   tyler@52.138.116.10
