@@ -7,10 +7,6 @@
   - name: Install Iptables
     apt: name=iptables-persistent
 
-  - name: Set up iptables rules
-    copy: src=iptables-save dest=/etc/iptables/rules.v4
-    notify: restart iptables-persistent
-
   - name: Flush existing firewall rules
     iptables:
      flush: true
@@ -60,7 +56,11 @@
       chain: INPUT
       jump: DROP
 
-
+     handlers:
+      - name: save iptables
+        iptables:  # this is the new stuff
+          path: /etc/sysconfig/iptables
+          state: save
  
 
 

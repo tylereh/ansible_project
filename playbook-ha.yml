@@ -1,7 +1,9 @@
 ---
--hosts: all
-  become: yes
+- hosts: all
 
   tasks:
+    - name: update apt cache
+      apt: update_cache=yes cache_valid_time=3600
+
     - name: install haproxy
       apt: name=haproxy state=present
